@@ -4,12 +4,12 @@ let isDark = false;
 // ===== Element References =====
 const toggleButton = document.querySelector("#theme-toggle");
 const footer = document.querySelector("#card-footer");
-const input = document.querySelector(".card__input");
+const nameInput = document.querySelector("#name-input");
+const cardName = document.querySelector("#card-name");
 
 // ===== Event: สลับธีม =====
 toggleButton.addEventListener("click", () => {
   isDark = !isDark;
-
   document.body.classList.toggle("dark", isDark);
 
   toggleButton.textContent = isDark
@@ -21,7 +21,13 @@ toggleButton.addEventListener("click", () => {
 const currentYear = new Date().getFullYear();
 footer.textContent = `© ${currentYear} — Deploy ด้วย GitHub Pages 🚀`;
 
-// ===== Event: รับข้อความจากช่อง Input =====
-input.addEventListener("input", () => {
-  console.log(`ผู้ใช้พิมพ์: ${input.value}`);
+// ===== เปลี่ยนชื่อด้านบนตามที่พิมพ์ =====
+nameInput.addEventListener("input", () => {
+
+  if (nameInput.value.trim() === "") {
+    cardName.textContent = "Naphatsakorn Timinkul";
+  } else {
+    cardName.textContent = nameInput.value;
+  }
+
 });
